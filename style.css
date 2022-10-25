@@ -62,9 +62,13 @@ input {
   color: #0072b5;
 }
 
+.search {
+  color: #f1f1f1;
+}
+
 .container {
   display: flex;
-  margin: 10%;
+  margin: 0 10% 0 10%;
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
@@ -122,7 +126,7 @@ ul {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: #f1f1f1;
+  background-color: #0072b5;
   animation: up 0.3s alternate infinite;
 }
 
