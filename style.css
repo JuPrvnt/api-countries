@@ -10,7 +10,7 @@
 body {
   min-height: 100vh;
   font-family: Raleway, "Courier New", Courier, monospace;
-  background-color: #fffafa;
+  background-color: #333;
 }
 
 h1 {
@@ -22,12 +22,55 @@ h1 {
   align-items: center;
 }
 
+.search-countries {
+  max-width: 700px;
+  min-width: 400px;
+  width: 70%;
+  margin: 30px auto;
+  position: relative;
+  display: flex;
+}
+
+.search-countries input {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  font-size: 18px;
+}
+
+.search-countries label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding-left: 8px;
+  color: #333;
+  transition: all 0.3s ease-in;
+}
+
+/* animation d'input */
+.search-countries:focus-within label,
+.search-countries.active-input label {
+  top: -15px;
+  padding-left: 5px;
+  color: #f1f1f1;
+}
+
 .container {
   display: flex;
   margin: 10%;
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -51,7 +94,7 @@ h1 {
   height: 60px;
 }
 
-.text {
+.text .name {
   overflow: hidden;
   text-overflow: ellipsis;
 }

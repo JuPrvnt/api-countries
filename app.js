@@ -3,6 +3,7 @@ let allCountries = [];
 let finalTab = [];
 
 const container = document.getElementsByClassName("container");
+const listCountries = document.querySelector(".list-countries");
 
 // je connecte le site à l'API avec tous les pays
 function fetchCountries() {
@@ -56,6 +57,8 @@ function fetchCountryFull(country) {
 // je créé les cartes
 function createCard(arr) {
   for (let i = 0; i < arr.length; i++) {
+    const li = document.createElement("li");
+
     const card = document.createElement("div");
     card.className = "card";
 
@@ -69,7 +72,7 @@ function createCard(arr) {
     informations.className = "informations";
 
     const names = document.createElement("p");
-    names.className = "text";
+    names.className = "name";
     names.innerText = arr[i].name;
 
     const capitals = document.createElement("p");
@@ -80,13 +83,15 @@ function createCard(arr) {
     //languages.className = "text";
     //languages.innerText = arr[i].language[0];
 
-    container[0].appendChild(card);
+    li.appendChild(card);
     card.appendChild(flagclass);
     card.appendChild(informations);
     flagclass.appendChild(imgFlag);
     informations.appendChild(names);
     informations.appendChild(capitals);
     //informations.appendChild(languages);
+
+    listCountries.appendChild(li);
   }
 }
 
@@ -113,4 +118,40 @@ function addCountries(nb) {
   const arrToAdd = allCountries.slice(index, index + nb);
   createCard(arrToAdd);
   index += nb;
+}
+
+// animation input
+const searchInput = document.querySelector(".search-countries input");
+
+searchInput.addEventListener("input", function (e) {
+  if (e.target.value !== "") {
+    e.target.parentNode.classList.add("active-input");
+  } else if (e.target.value === "") {
+    e.target.parentNode.classList.remove("active-input");
+  }
+});
+
+// search
+searchInput.addEventListener("keyup", search);
+
+function search() {
+  if (index < 250) {
+    addCountries(220);
+  }
+
+  let filter, allLi, titleValue, allTitles;
+
+  filter = searchInput.value.toUpperCase();
+  allLi = document.querySelectorAll("li");
+  allTitles = document.querySelectorAll(".name");
+
+  for (let i = 0; i < allLi.length; i++) {
+    titleValue = allTitles[i].innerText;
+
+    if (titleValue.toUpperCase().indexOf(filter) > -1) {
+      allLi[i].style.display = "flex";
+    } else {
+      allLi[i].style.display = "none";
+    }
+  }
 }
