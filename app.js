@@ -4,6 +4,7 @@ let finalTab = [];
 
 const container = document.getElementsByClassName("container");
 const listCountries = document.querySelector(".list-countries");
+const loading = document.querySelector(".loader");
 
 // je connecte le site à l'API avec tous les pays
 function fetchCountries() {
@@ -51,6 +52,7 @@ function fetchCountryFull(country) {
       }
 
       createCard(finalTab);
+      loading.style.display = "none";
     });
 }
 

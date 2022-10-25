@@ -10,7 +10,7 @@
 body {
   min-height: 100vh;
   font-family: Raleway, "Courier New", Courier, monospace;
-  background-color: #333;
+  background-color: #f1f1f1;
 }
 
 h1 {
@@ -22,6 +22,10 @@ h1 {
   align-items: center;
 }
 
+input {
+  background-color: #0072b5;
+}
+
 .search-countries {
   max-width: 700px;
   min-width: 400px;
@@ -29,6 +33,7 @@ h1 {
   margin: 30px auto;
   position: relative;
   display: flex;
+  margin-top: 50px;
 }
 
 .search-countries input {
@@ -45,7 +50,7 @@ h1 {
   top: 50%;
   transform: translateY(-50%);
   padding-left: 8px;
-  color: #333;
+  color: #f1f1f1;
   transition: all 0.3s ease-in;
 }
 
@@ -54,7 +59,7 @@ h1 {
 .search-countries.active-input label {
   top: -15px;
   padding-left: 5px;
-  color: #f1f1f1;
+  color: #0072b5;
 }
 
 .container {
@@ -97,4 +102,44 @@ ul {
 .text .name {
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* Anim loader */
+.loader {
+  position: absolute;
+  top: 250px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.point {
+  margin: 0px 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #f1f1f1;
+  animation: up 0.3s alternate infinite;
+}
+
+.point:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.point:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.point:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes up {
+  100% {
+    transform: translateY(-30px);
+  }
 }
